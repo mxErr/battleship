@@ -11,20 +11,27 @@ let loc,
 while (isSunk == false) {
     guess = prompt('Введите число от 0 до 6');
     console.log(location1, location2, location3)
-    if (guess < 0 || guess > 6 || guess == "") {
+    if (guess < 0 || guess > 6 || isNaN(guess) || guess == null) {
         alert('введите кооректные данные');
     }else{
         guesses++;
-
+        
         if (guess == location1 || guess == location2 || guess == location3){
             hits++;
+            if (guess == location1) {
+                location1 = false;
+            }
+            if (guess == location2) {
+                location2 = false;
+            }
+            if (guess == location3) {
+                location3 = false;
+            }
             
             if (hits == 3) {
                 isSunk = true;
                 alert ('Вы потопили корабль');
             }
-        }else if(guess == null){
-            alert("Введите корректные данные")
         }
         else{
             alert("Miss");
